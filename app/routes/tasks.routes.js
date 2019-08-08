@@ -1,6 +1,8 @@
 module.exports = (app) => {
     const tasks = require('../controllers/tasks.controller.js');
 
+
+    
     // Create a new Tasks
     app.post('/api/tasks', tasks.create);
 
@@ -16,10 +18,7 @@ module.exports = (app) => {
     // Delete a Task with noteId
     app.delete('/api/tasks/:taskId', tasks.delete);
      
-    //Retrieve a all Tasks with description
-    //app.get('api/tasks/search/:keyword',tasks.find);       
+        
 
-    //Retrieve all Tasks with category 
-    //app.get('api/tasks/category/search/:keyword',tasks.find)
 
 }

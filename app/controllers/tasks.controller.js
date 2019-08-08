@@ -4,6 +4,9 @@ const Task = require('../models/tasks.model.js');
 
 
 
+
+
+
 // Create and Save a new Note
 exports.create = (req, res) => {
     // Step 0 ==>  Validate request
@@ -45,47 +48,18 @@ exports.create = (req, res) => {
 
 
 
-
-
-
-
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
-    //adding some logic to hendle the search query :
-    if (!req.params.keyword)
-    {
-        //exucte the search query :
-            //send in body feild the specifque feild to search (description or category)
-            SearchFilter=req.body.SearchFilter
-            if (SearchFilter=="description")
-            {
-                //search for description == keyword
-                //with keyword taken from url & SearchFilter taken from the body request
-            }
-            else if (SearchFilter=="category"){
-                //search for category == keyword 
-                 //with keyword taken from url & SearchFilter taken from the body request
-            }
-    }
-    else {
-
         //desplay all feild
-
-    }
-    Task.find()
-    .then(tasks => {
-        res.send(tasks);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+        Task.find()
+        .then(tasks => {
+            res.send(tasks);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving notes."
+            });
         });
-    });
-};
-
-
-
-
-
+    };
 
 
 
@@ -113,62 +87,6 @@ exports.findOne = (req, res) => {
         });
     });
 };
-
-
-
-
-
-
-/*
-exports.find() = (req, res) => {
-    const keyword=req.params.keyword
-
-     // Validate request
-     if(!keyword) {
-        return res.status(400).send({
-            message: "Enter keyword can not be empty"
-        });
-    }
-
-
-    //Decalare the query :
-    var query = { sku: { $regex: /^keyword/i } };  
-    Task.find(query)
-    .then(tasks => {
-        res.send(tasks);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
-        });
-    });
-
-    /*
-    .then(task => {
-        if(!task) {
-            return res.status(404).send({
-                message: "task not found with id " + req.params.taskId
-            });            
-        }
-        res.send(task);
-    }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "task not found with id " + req.params.taskId
-            });                
-        }
-        return res.status(500).send({
-            message: "Error retrieving task with id " + req.params.taskId
-        });
-    });
-   
-
-
-};
-
-*/
-
-
-
 
 
 

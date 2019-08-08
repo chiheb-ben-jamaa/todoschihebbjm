@@ -50,8 +50,8 @@ app.get('/',function (req,res){
 
 // all other requests redirect to 404
 app.all("*", function (req, res, next) {
-    console.log("Testing the API !")
-    return res.send({ error: true, message: 'Router not Found ' })
+    console.log("ERROR 404 !")
+    return res.send({ error: true, message: 'Route not Found ' })
     next();
 });
  
