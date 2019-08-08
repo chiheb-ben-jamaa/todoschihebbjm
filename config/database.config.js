@@ -1,3 +1,3 @@
 module.exports = {
-    url: 'mongodb://localhost:27017/todo_app_rest'
+    url: 'mongodb://<dbuser>:<dbpassword>@ds261277.mlab.com:61277/heroku_vlj2v2wl'
 }
