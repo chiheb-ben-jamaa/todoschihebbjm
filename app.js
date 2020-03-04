@@ -5,13 +5,19 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+var cors = require('cors');
+
+
+
+//app use cors to pass header params :
+app.use(cors());
 
 
 //create express app:
 const app=express();
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
@@ -73,7 +79,7 @@ app.use(function (req, res, next) {
     // to the API (e.g. in case you use sessions)
     //res.setHeader('Access-Control-Allow-Credentials', true);
     res.header('Content-type','application/x-www-form-urlencoded');
-    
+
     // Pass to next layer of middleware
     next();
 });
