@@ -5,12 +5,10 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var cors = require('cors');
 
 
 
-//app use cors to pass header params :
-app.use(cors());
+
 
 
 //create express app:
